@@ -1,0 +1,85 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "API for interacting with Fishes Dataset",
+    "version": "1.0.0",
+    "title": "Fishes API",
+    "contact": {
+      "email": "tahjyei@starapple.ai"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "servers": [
+    {
+      "url": "/api/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Dashboard",
+      "description": "Fetching dashboard data from the server"
+    }
+  ],
+  "paths": {
+    "/dashboard": {
+      "get": {
+        "tags": ["Dashboard Data Request"],
+        "summary": "Returns Dashboard Data",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Fish": {
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "species": {
+            "type": "string"
+          },
+          "width": {
+            "type": "float"
+          },
+          "height": {
+            "type": "float"
+          },
+          "weight": {
+            "type": "float"
+          },
+          "length": {
+            "type": "float"
+          }
+        }
+      },
+    "Dashboard Reponse": {
+      "properties": {
+        "average_weight": {
+          "type": "float"
+        },
+        "total_weight": {
+          "type": "float"
+        },
+        "total_unique_fishes": {
+          "type": "integer"
+        },
+        "total_fishes": {
+          "type": "integer"
+        },
+        "unique_fishes": {
+          "type": "array"
+        }
+
+      }
+    }
+    }
+  }
+}
