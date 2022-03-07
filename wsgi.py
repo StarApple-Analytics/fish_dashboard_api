@@ -3,6 +3,14 @@ from api import create_app
 
 app = create_app()
 
+from flask_migrate import Migrate
+
+from api import create_app, db
+
+
+app = create_app()
+migrate = Migrate(app, db)
+
 # Fix to nginx reverse proxy issues (if any, uncomment commented lines)
 app.wsgi_app = ProxyFix(app.wsgi_app)
 
