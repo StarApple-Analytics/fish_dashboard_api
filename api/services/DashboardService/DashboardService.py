@@ -132,7 +132,7 @@ def dashboardData():
         "fishes_heights": fish_heights,
         "fishes_widths": fish_widths,
         "fishes_diagonal_lengths": fish_diagonal_lengths,
-        "fishes_horizontal_lengths": fish_vertical_lengths,
-        "fishes_vertical_lengths": fish_horizontal_lengths,
+        "fishes_vertical_lengths": fish_vertical_lengths,
+        "fishes_horizontal_lengths": fish_horizontal_lengths,
         "fishes": all_Fishes,
     }
