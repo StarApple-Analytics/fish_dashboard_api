@@ -106,10 +106,7 @@
             },
             "responses": {
               "200": {
-                "description": "OK",
-                "schema": {
-                  "$ref": "#/components/schemas/predictionResponse"
-                }
+                "description": "OK"
               }
             }
           }
@@ -167,15 +164,15 @@
             "type": "number",
             "format": "float"
           },
-          "diagonal_length": {
+          "diagLength": {
             "type": "number",
             "format": "float"
           },
-          "vertical_length": {
+          "verticalLength": {
             "type": "number",
             "format": "float"
           },
-          "horizontal_length": {
+          "horizonLength": {
             "type": "number",
             "format": "float"
           }

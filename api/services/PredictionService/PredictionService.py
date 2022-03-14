@@ -11,8 +11,9 @@ def predict(width, height, diagLength, horizonLength, verticalLength):
     input_df = cleanData(width, height, diagLength, horizonLength, verticalLength)
     output_df = predict_weight(input_df)
 
+
     return {
-        "weight": json.dumps(output_df, cls=numpyencoder.NumpyEncoder),
+        "weight": output_df[0],
     }
 
 

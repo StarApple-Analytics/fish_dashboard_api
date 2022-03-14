@@ -8,5 +8,5 @@ def show():
         "width", "height", "horizonLength", "verticalLength", "diagLength"
     )(request.json)
     return PredictionService.predict(
-        width, height, diagLength, horizonLength, verticalLength
+        int(width), int(height), int(diagLength), int(horizonLength), int(verticalLength)
     )
