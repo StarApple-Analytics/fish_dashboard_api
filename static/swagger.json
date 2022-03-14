@@ -30,7 +30,35 @@
         "summary": "Returns Dashboard Data",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/dashboardResponse"
+            }
+          }
+        }
+      }
+    },
+    "/predict": {
+      "post": {
+        "tags": ["Predict Weight Request"],
+        "summary": "Returns Predicted Weight",
+        "requestBody": {
+          "description": "Predict Weight Post Object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/predictionRequestBody"
+              }
+            },
+            "responses": {
+              "200": {
+                "description": "OK",
+                "schema": {
+                  "$ref": "#/components/schemas/predictionResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -38,7 +66,7 @@
   },
   "components": {
     "schemas": {
-      "Fish": {
+      "fishDTO": {
         "properties": {
           "id": {
             "type": "number"
@@ -47,39 +75,227 @@
             "type": "string"
           },
           "width": {
-            "type": "float"
+            "type": "number",
+            "format": "float"
           },
           "height": {
-            "type": "float"
+            "type": "number",
+            "format": "float"
           },
           "weight": {
-            "type": "float"
+            "type": "number",
+            "format": "float"
           },
           "length": {
-            "type": "float"
+            "type": "number",
+            "format": "float"
           }
         }
       },
-    "Dashboard Reponse": {
-      "properties": {
-        "average_weight": {
-          "type": "float"
-        },
-        "total_weight": {
-          "type": "float"
-        },
-        "total_unique_fishes": {
-          "type": "integer"
-        },
-        "total_fishes": {
-          "type": "integer"
-        },
-        "unique_fishes": {
-          "type": "array"
+      "predictionResponse": {
+        "properties": {
+          "weight": {
+            "type": "number",
+            "format": "float"
+          }
         }
-
+      },
+      "predictionRequestBody": {
+        "properties": {
+          "height": {
+            "type": "number",
+            "format": "float"
+          },
+          "length": {
+            "type": "number",
+            "format": "float"
+          },
+          "width": {
+            "type": "number",
+            "format": "float"
+          },
+          "diagonal_length": {
+            "type": "number",
+            "format": "float"
+          },
+          "vertical_length": {
+            "type": "number",
+            "format": "float"
+          },
+          "horizontal_length": {
+            "type": "number",
+            "format": "float"
+          }
+        }
+      },
+      "dashboardResponse": {
+        "properties": {
+          "average_weight": {
+            "type": "number",
+            "format": "float"
+          },
+          "total_weight": {
+            "type": "number",
+            "format": "float"
+          },
+          "total_unique_fishes": {
+            "type": "integer"
+          },
+          "total_fishes": {
+            "type": "integer"
+          },
+          "unique_fishes": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            }
+          },
+          "fishes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "height": {
+                  "type": "number",
+                  "format": "float"
+                },
+                "id": {
+                  "type": "uuid"
+                },
+                "length": {
+                  "type": "number",
+                  "format": "float"
+                },
+                "species": {
+                  "type": "string"
+                },
+                "weight": {
+                  "type": "number",
+                  "format": "float"
+                },
+                "width": {
+                  "type": "number",
+                  "format": "float"
+                },
+                "diagonal_length": {
+                  "type": "number",
+                  "format": "float"
+                },
+                "vertical_length": {
+                  "type": "number",
+                  "format": "float"
+                },
+                "horizontal_length": {
+                  "type": "number",
+                  "format": "float"
+                }
+              }
+            }
+          },
+          "fishes_widths": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "avg_width": {
+                  "type": "number",
+                  "format": "float"
+                },
+                "max_width": {
+                  "type": "number",
+                  "format": "float"
+                },
+                "species": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "fishes_heights": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "avg_height": {
+                  "type": "number",
+                  "format": "float"
+                },
+                "max_height": {
+                  "type": "number",
+                  "format": "float"
+                },
+                "species": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "fishes_diagonal_lengths": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "avg_diagonal_lengths": {
+                  "type": "number",
+                  "format": "float"
+                },
+                "max_diagonal_lengths": {
+                  "type": "number",
+                  "format": "float"
+                },
+                "species": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "fishes_horizontal_lengths": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "avg_horizontal_length": {
+                  "type": "number",
+                  "format": "float"
+                },
+                "max_horizontal_lengths": {
+                  "type": "number",
+                  "format": "float"
+                },
+                "species": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "fishes_vertical_lengths": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "avg_vertical_length": {
+                  "type": "number",
+                  "format": "float"
+                },
+                "max_vertical_length": {
+                  "type": "number",
+                  "format": "float"
+                },
+                "species": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
-    }
     }
   }
 }

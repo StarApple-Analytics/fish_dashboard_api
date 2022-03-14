@@ -3,7 +3,7 @@ from flask import request
 from operator import itemgetter
 
 
-def view():
+def show():
     width, height, diagLength, horizonLength, verticalLength = itemgetter(
         "width", "height", "horizonLength", "verticalLength", "diagLength"
     )(request.json)
