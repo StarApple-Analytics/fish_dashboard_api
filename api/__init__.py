@@ -47,10 +47,16 @@ def create_app():
 
 
     # Import the module / component using their blueprints
-    from api.routes import dashboard_bp
+    from api.routes import API_ROUTES
 
     # Register Blueprints
-    app.register_blueprint(dashboard_bp, url_prefix="/api/")
+
+
+    for api_blueprint in API_ROUTES:
+        app.register_blueprint(api_blueprint, url_prefix="/api/")
+
+
+    # Register Swagger Blueprint
     app.register_blueprint(SWAGGERUI_BLUEPRINT, url_prefix="/docs/")
 
     @app.before_first_request

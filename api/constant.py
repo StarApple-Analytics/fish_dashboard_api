@@ -16,7 +16,7 @@ RESOURCES_DIR= BASE_DIR /  "api" / "resources"
 STATIC_DIR = BASE_DIR / "api" / "static"
 
 FISH_CSV_DIR = RESOURCES_DIR / "fish_data.csv"
-
+MODEL_PATH = RESOURCES_DIR / "model.pickle"
 # Formattings
 DATE_TIME_FORMAT = '%Y-%m-%d %H:%M:%S'
 DB_RESULT_DATE_TIME_FORMAT = '%Y-%m-%dT%H: %M: %S'
