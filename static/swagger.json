@@ -38,6 +38,59 @@
         }
       }
     },
+    "/fish/store": {
+      "post": {
+        "tags": ["Upload Fish Data"],
+        "summary": "Upload fish data",
+        "requestBody": {
+          "required": true,
+          "description": "Upload Fish Dataset",
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fishes_upload_sheet": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/fish/search": {
+      "get": {
+        "tags": ["Fish Search"],
+        "summary": "Search for Fish By Species",
+        "parameters":[ {
+          "in": "query",
+          "required": true,
+          "name": "species",
+          "schema": {
+            "type": "string"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/fishDTO"
+              }
+            }
+          }
+        }
+      }
+    },
     "/predict": {
       "post": {
         "tags": ["Predict Weight Request"],

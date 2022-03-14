@@ -64,6 +64,7 @@ def create_app():
             df = read_csv(FISH_CSV_DIR)
             df = df.rename(columns=str.lower)
             df = df.rename(columns={"length1": "vertical_length", "length2": "horizontal_length", "length3": "diagonal_length"})
+            df['species'] = df['species'].str.lower()
             df.to_sql(
                 "fishes", con=engine, if_exists="append", chunksize=1000, index=False
             )

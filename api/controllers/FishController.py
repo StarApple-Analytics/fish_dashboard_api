@@ -11,3 +11,11 @@ def store():
     else:
         fishesFile= request.files["fishes_upload_sheet"]
         return FishService.uploadFile(fishesFile)
+
+
+def show():
+    try:
+        species = itemgetter('species')(request.args)
+        return FishService.search(species)
+    except Exception as e:
+        return {"error": e.message}

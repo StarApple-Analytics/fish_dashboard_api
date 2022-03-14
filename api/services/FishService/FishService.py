@@ -4,10 +4,13 @@ import json
 from api import db, ma
 from flask import Response
 from api.models.Fish import Fish
+from api.schemas.FishSchema import FishSchema
+
+
+fishes_schema = FishSchema(many=True)
 
 
 def upload(data):
-
     for fish in data:
         fish = Fish(
             diagonal_length=fish.get("diagonal_length", None),
@@ -18,7 +21,7 @@ def upload(data):
             species=fish.get("species", None),
         )
         db.session.add(fish)
-    db.session.commit() 
+    db.session.commit()
     return Response("Ok", 200)
 
 
@@ -47,3 +50,10 @@ def uploadFile(file):
         return Response("Upload Successfully", 200)
 
     return Response("Error Uploading", 401)
+
+
+
+def search(species):
+    
+    all_Fishes = fishes_schema.dump(Fish.query.filter_by(species=species.lower()).all())
+    return {"fishes": all_Fishes}
