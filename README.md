@@ -23,7 +23,7 @@ $ cp .env.example .env
 
 
 
-## Setting Flask app
+## Configure Flask app
 
 Set Flask App on CMD
 
@@ -44,7 +44,8 @@ $ flask db upgrade
 ```
 
 
-Running Flask app
+
+## Run Flask app
 
 ```bash
 $ flask run
