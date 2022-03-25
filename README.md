@@ -16,12 +16,33 @@ Copy environment variables through .env.example and configure them
 ```bash
 $ cp .env.example .env
 ```
-Setting Flask app
+
+
+
+
+
+
+
+## Setting Flask app
+
+Set Flask App on CMD
 
 ```bash
 $ export FLASK_APP=run.py
 $ export FLASK_DEBUG=true # Enable debugging
 ```
+
+## Migrating Database
+
+Migration files are responsible for managing the currently configured database, ensuring that stored tables matches the app's data models. 
+The migration files are located in the migration folder, ensure that you have set the Database URI in the ```.env``` file
+
+Run Migrations
+
+```
+$ flask db upgrade
+```
+
 
 Running Flask app
 
